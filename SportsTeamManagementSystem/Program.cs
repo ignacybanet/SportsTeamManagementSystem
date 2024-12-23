@@ -1,14 +1,22 @@
 ﻿namespace SportsTeamManagementSystem;
 
-public class Player(string name, string position, int score)
+public class Player
 {
-    public string Name = name;
-    public string Position = position;
-    public int Score = score;
+    public string Name;
+    public string Position;
+    public int Score;
 
-    public static void UpdateScore(string playerName, int newScore)
+    public Player(string name, string position)
     {
-            Console.WriteLine($"{playerName}'s player score: {newScore}");
+        Name = name;
+        Position = position;
+        Score = 0; // wynik jest domyslnie rowny 0
+    }
+
+    public static void UpdateScore(Player player, int newScore) // obiekt jako parametr funkcji
+    {
+        player.Score = newScore;
+        Console.WriteLine($"{player.Name}'s player score now: {newScore}");
     }
 }
 
@@ -16,7 +24,8 @@ internal class Program
 {
     public static void Main(string[] args)
     {
-        Player alex = new Player("alex","position1",10);
-        Player.UpdateScore("Alex",20);
+        Player alex = new Player("Alex", "Goalkeeper");
+        Player bob = new Player("Bob", "Defender");
+        Player.UpdateScore(alex, 30);
     }
 }
