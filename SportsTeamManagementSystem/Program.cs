@@ -1,30 +1,22 @@
 ﻿namespace SportsTeamManagementSystem;
 
-public class Player
+public class Player(string name, string position, int score)
 {
-    public string Name;
-    public string Position;
-    public int Score;
-    
-    public string UpdateScore(string playerName, int newScore)
+    public string Name = name;
+    public string Position = position;
+    public int Score = score;
+
+    public static void UpdateScore(string playerName, int newScore)
     {
-        if (this.Name == playerName)
-        {
-            this.Score = newScore;
-        }
-        return this.Score.ToString();
+            Console.WriteLine($"{playerName}'s player score: {newScore}");
     }
 }
-
 
 internal class Program
 {
     public static void Main(string[] args)
     {
-        Player player1 = new Player();
-        player1.Name = "Alex";
-        Console.WriteLine(player1.Name);
-        player1.UpdateScore("Alex", 15);
-        Console.WriteLine(player1.Score.ToString());
+        Player alex = new Player("alex","position1",10);
+        Player.UpdateScore("Alex",20);
     }
 }
