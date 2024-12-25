@@ -68,9 +68,15 @@ public class Team
         Console.WriteLine($"The lowest scoring player is {lowestScoringPlayer.Name} and their score is {lowestScoringPlayer.Score}");
     }
     
-    public static void CalculateAverageScore()
+    public static void CalculateAverageTeamScore()
     {
-        // TODO: use static function
+        double totalTeamScore = 0d;
+        foreach (var player in ListOfPlayers)
+        {
+            totalTeamScore += player.Score;
+        }
+        double averageScore = totalTeamScore / ListOfPlayers.Count;
+        Console.WriteLine($"Average team score: {averageScore}");
     }
 }
 
@@ -80,6 +86,13 @@ internal class Program
     {
         Team.AddNewPlayer("John","Attacker");
         Player.UpdateScore("John","Attacker",35);
-        Team.DisplayTeamStatistics();
+        Team.AddNewPlayer("Jane","Defender");
+        Player.UpdateScore("Jane","Defender",20);
+        Team.AddNewPlayer("Mike","Midfielder");
+        Player.UpdateScore("Mike","Midfielder",90);
+        Team.AddNewPlayer("Sarah","Goalkeeper");
+        Player.UpdateScore("Sarah","Goalkeeper",50);
+        
+        Team.CalculateAverageTeamScore();
     }
 }
