@@ -11,14 +11,14 @@
         Score = 0; // wynik jest domyslnie rowny 0
     }
     
-    public static void UpdateScore(string playerName, string playerPosition, int newScore) // TODO: find player by position as well
+    public static void UpdateScore(string playerName, string playerPosition, int newScore)
     {
-        Player foundPlayer = Team.ListOfPlayers.Find(player => player.Name == playerName); // znalezienie gracza w liscie graczy. trzeba zdefiniowac foundPlayer jako obiekt klasy Player, inaczej nie zadziala
+        Player foundPlayer = Team.ListOfPlayers.Find(player => player.Name == playerName && player.Position == playerPosition); // znalezienie gracza w liscie graczy. trzeba zdefiniowac foundPlayer jako obiekt klasy Player, inaczej nie zadziala
         foundPlayer.Score = newScore;
         Console.WriteLine($"{foundPlayer.Name}'s player score now: {newScore}");
     }
     
-    public static void SearchForPlayerByPosition(string position)
+    public static void SearchForPlayersByPosition(string position)
     {
         // TODO: use delegates and anonymous functions
     }
@@ -78,14 +78,8 @@ internal class Program
 {
     public static void Main(string[] args)
     {
-        Team.AddNewPlayer("Max","Defender");
-        Player.UpdateScore("Max","Defender",30);
-        Team.AddNewPlayer("Tom","Attacker");
-        Player.UpdateScore("Tom","Attacker",40);
-        Team.AddNewPlayer("Jack","Goalkeeper");
-        Player.UpdateScore("Jack","Goalkeeper",10);
-        Team.AddNewPlayer("Frank","Midfielder");
-        Player.UpdateScore("Frank","Midfielder",100);
+        Team.AddNewPlayer("John","Attacker");
+        Player.UpdateScore("John","Attacker",35);
         Team.DisplayTeamStatistics();
     }
 }
